@@ -1,6 +1,9 @@
 LIBRARY_NAME = libRose
 $(LIBRARY_NAME)_OBJC_FILES = $(wildcard *.m)
-$(LIBRARY_NAME)_FRAMEWORKS = UIKit
+
+# Combine UIKit and AudioServices here
+$(LIBRARY_NAME)_FRAMEWORKS = UIKit AudioToolbox
+
 $(LIBRARY_NAME)_CFLAGS = -I./ -Ipublic -Ioverlayheaders -I. -fobjc-arc
 $(LIBRARY_NAME)_USE_MODULES = 0
 ADDITIONAL_CFLAGS += -DTHEOS_LEAN_AND_MEAN
@@ -8,9 +11,9 @@ ADDITIONAL_CFLAGS += -DTHEOS_LEAN_AND_MEAN
 include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/library.mk
 
-stage::
-	mkdir -p $(THEOS_STAGING_DIR)/usr/include/libRose
-	$(ECHO_NOTHING)rsync -a ./public/* $(THEOS_STAGING_DIR)/usr/include/Rose $(FW_RSYNC_EXCLUDES)$(ECHO_END)
-	mkdir -p $(THEOS)/include/Rose
-	cp -r ./public/* $(THEOS)/include/Rose
-	cp $(THEOS_STAGING_DIR)/usr/lib/libRose.dylib $(THEOS)/lib/libRose.dylib
+#stage::
+#	mkdir -p $(THEOS_STAGING_DIR)/usr/include/libRose
+#	$(ECHO_NOTHING)rsync -a ./public/* $(THEOS_STAGING_DIR)/usr/include/Rose $(FW_RSYNC_EXCLUDES)$(ECHO_END)
+#	mkdir -p $(THEOS)/include/Rose
+#	cp -r ./public/* $(THEOS)/include/Rose
+#	cp $(THEOS_STAGING_DIR)/usr/lib/libRose.dylib $(THEOS)/lib/libRose.dylib
