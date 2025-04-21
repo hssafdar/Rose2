@@ -1,4 +1,4 @@
-ARCHS = arm64 arm64e
+ARCHS = arm64
 TWEAK_NAME = RoseCalculator
 $(TWEAK_NAME)_FILES = Tweak.x
 $(TWEAK_NAME)_FRAMEWORKS = UIKit
